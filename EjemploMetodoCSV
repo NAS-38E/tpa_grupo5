@@ -1,1 +1,20 @@
+import csv
 
+class Restaurante:
+    ...
+    def exportar_mesas_csv(self, archivo):
+        with open(archivo, 'w', newline='') as csvfile:
+            fieldnames = ['capacidad', 'ocupada']
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+            writer.writeheader()
+            for mesa in self.mesas:
+                writer.writerow({'capacidad': mesa.capacidad, 'ocupada': mesa.ocupada})
+                
+                
+Para usar este método hay q llamarlo desde una instancia de la clase Restaurante y pasarle el nombre del archivo CSV como argumento. 
+
+restaurante = Restaurante()
+restaurante.exportar_mesas_csv('mesas.csv')           
+        
+        
